@@ -306,9 +306,9 @@ for fold in np.arange(k):
 
             svd_func = TruncatedSVD(n_components= 50, random_state= 1)
 
-            fold_train_X, fold_test_X = tfidf_train_test(fold_train_X, fold_test_X)
+            fold_train_X, fold_test_X = tfidf_train_test(X_train[fold_train,:], X_train[fold_test, :])
 
-            fold_train_X, fold_test_X = Process_Data(X_train[fold_train,:], X_train[fold_test, :], data_type= datatype, return_dense= True)
+            fold_train_X, fold_test_X = Process_Data(fold_train_X, fold_test_X, data_type= datatype, return_dense= True)
             
             fold_train_X = svd_func.fit_transform(fold_train_X)
             fold_test_X = svd_func.transform(fold_test_X)
